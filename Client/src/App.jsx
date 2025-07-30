@@ -6,6 +6,7 @@ import TemplateOne from "./components/templates/TemplateOne";
 import PortfolioPage from "./pages/PortfolioPage";
 import TemplateSelection from "./components/TemplateSelection";
 import PortfolioInput from "./components/Form/PortfolioInput";
+import Preview from "./pages/Preview";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/select-template" element={<TemplateSelection />} />
         <Route path="/create-portfolio" index element={<CreatePortfolio />} />
         <Route path="/create-portfolio/form" element={<PortfolioInput />} />
+        <Route path="/preview" element={<Preview />} />
       </Routes>
     </>
   );

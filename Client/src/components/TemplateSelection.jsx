@@ -13,14 +13,15 @@ import {
 const TemplateSelection = () => {
   const navigate = useNavigate();
 
-  const handleSelect = () => {
-    navigate(`/create-portfolio/form`); // You can change this route logic
+  const handleSelect = (templateName) => {
+    localStorage.setItem("selectedTemplate", templateName);
+    navigate("/create-portfolio/form");
   };
 
   const templates = [
     {
       name: "TemplateOne",
-      preview: "/previews/template1.png", // Add actual preview image paths
+      preview: "/previews/template1.png",
     },
     {
       name: "TemplateTwo",

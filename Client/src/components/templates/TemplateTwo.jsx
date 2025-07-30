@@ -8,16 +8,18 @@ import SkillsTimeline from "./templateTwo/SkillsTimeline";
 import Footer from "./templateTwo/Footer";
 import { Typography, Box } from "@mui/material";
 
-const TemplateTwo = () => {
+const TemplateTwo = ({ profile: propProfile }) => {
   const { id } = useParams();
-  const [profile, setProfile] = useState(null);
-  console.log(profile);
-  
+  const [profile, setProfile] = useState(propProfile || null);
 
   useEffect(() => {
-    const found = mockProfiles.find((p) => p.id === parseInt(id));
-    setProfile(found);
-  }, [id]);
+    if (!propProfile && id) {
+      const found = mockProfiles.find((p) => p.id === parseInt(id));
+      setProfile(found || null);
+    }
+  }, [id, propProfile]);
+  console.log(profile);
+  
 
   if (!profile)
     return (

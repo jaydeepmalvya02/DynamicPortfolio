@@ -25,23 +25,32 @@ import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
 import { yellow } from "@mui/material/colors";
 
-const TemplateOne = () => {
+const TemplateOne = ({ profile: propProfile }) => {
   const { id } = useParams();
-  const [profile, setProfile] = useState(null);
+  const [profile, setProfile] = useState(propProfile || null);
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    const data = mockProfiles.find((p) => p.id === parseInt(id));
-    setProfile(data);
-    const t = setTimeout(() => setShow(true), 200);
-    return () => clearTimeout(t);
-  }, [id]);
+    if (!propProfile && id) {
+      const found = mockProfiles.find((p) => p.id === parseInt(id));
+      setProfile(found);
+    }
+    const timeout = setTimeout(() => setShow(true), 200);
+    return () => clearTimeout(timeout);
+  }, [id, propProfile]);
 
-  if (!profile) return <Typography sx={{ p: 5 }}>Loading...</Typography>;
+  if (!profile)
+    return (
+      <Box sx={{ p: 5 }}>
+        <Typography align="center" variant="h6">
+          Profile not found.
+        </Typography>
+      </Box>
+    );
 
   return (
     <Box sx={{ bgcolor: yellow[700], minHeight: "100vh" }}>
-      {/* Header */}
+      {/* --- Header --- */}
       <Box
         sx={{
           bgcolor: yellow[700],
@@ -64,7 +73,7 @@ const TemplateOne = () => {
         </Container>
       </Box>
 
-      {/* About Me */}
+      {/* --- About Section --- */}
       <Box sx={{ bgcolor: "#212432", color: "#fff", py: 6 }}>
         <Container maxWidth="md">
           <Typography
@@ -101,7 +110,6 @@ const TemplateOne = () => {
                 sx={{
                   mt: 1,
                   borderRadius: 8,
-                  transition: "transform 0.3s ease, background 0.3s ease",
                   "&:hover": {
                     transform: "scale(1.05)",
                     backgroundColor: "#ffa000",
@@ -127,7 +135,7 @@ const TemplateOne = () => {
         </Container>
       </Box>
 
-      {/* Skills */}
+      {/* --- Skills --- */}
       <Box sx={{ bgcolor: "#242936", py: 7 }}>
         <Container maxWidth="lg">
           <Typography
@@ -147,7 +155,6 @@ const TemplateOne = () => {
                       color: "#fff",
                       borderRadius: 4,
                       boxShadow: 5,
-                      transition: "transform 0.3s ease, box-shadow 0.3s ease",
                       "&:hover": {
                         transform: "translateY(-6px)",
                         boxShadow: "0 10px 25px rgba(255, 193, 7, 0.3)",
@@ -200,7 +207,7 @@ const TemplateOne = () => {
         </Container>
       </Box>
 
-      {/* Services */}
+      {/* --- Services --- */}
       <Box sx={{ bgcolor: "#222", py: 8 }}>
         <Container maxWidth="md">
           <Typography
@@ -219,7 +226,6 @@ const TemplateOne = () => {
                       borderRadius: 4,
                       bgcolor: "#ffd600",
                       color: "#232323",
-                      transition: "all 0.3s ease",
                       "&:hover": {
                         transform: "translateY(-5px)",
                         boxShadow: "0px 6px 24px rgba(255, 214, 0, 0.6)",
@@ -244,7 +250,7 @@ const TemplateOne = () => {
         </Container>
       </Box>
 
-      {/* Photo Gallery */}
+      {/* --- Gallery --- */}
       <Box sx={{ bgcolor: "#242936", py: 7 }}>
         <Container maxWidth="md">
           <Typography
@@ -267,7 +273,6 @@ const TemplateOne = () => {
                       backgroundSize: "cover",
                       backgroundPosition: "center",
                       boxShadow: 3,
-                      transition: "transform 0.4s ease",
                       "&:hover": {
                         transform: "scale(1.07)",
                       },
@@ -280,7 +285,7 @@ const TemplateOne = () => {
         </Container>
       </Box>
 
-      {/* Contact */}
+      {/* --- Contact --- */}
       <Box sx={{ bgcolor: "#1b1e28", py: 6 }}>
         <Container maxWidth="sm">
           <Typography
@@ -291,33 +296,13 @@ const TemplateOne = () => {
             Get In <span style={{ color: "#ff5252" }}>Touch</span>
           </Typography>
           <Stack spacing={2} direction="row" justifyContent="center">
-            <Chip
-              icon={<EmailIcon />}
-              label={profile.email}
-              color="primary"
-              sx={{
-                transition: "transform 0.2s ease",
-                "&:hover": {
-                  transform: "scale(1.05)",
-                },
-              }}
-            />
-            <Chip
-              icon={<PhoneIcon />}
-              label={profile.phone}
-              color="success"
-              sx={{
-                transition: "transform 0.2s ease",
-                "&:hover": {
-                  transform: "scale(1.05)",
-                },
-              }}
-            />
+            <Chip icon={<EmailIcon />} label={profile.email} color="primary" />
+            <Chip icon={<PhoneIcon />} label={profile.phone} color="success" />
           </Stack>
         </Container>
       </Box>
 
-      {/* Footer */}
+      {/* --- Footer --- */}
       <Box
         sx={{
           bgcolor: "#131419",
