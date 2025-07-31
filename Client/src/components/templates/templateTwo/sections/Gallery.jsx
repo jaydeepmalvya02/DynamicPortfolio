@@ -2,9 +2,16 @@
 import React from "react";
 import { Box, Typography, Grid, Paper } from "@mui/material";
 
-export default function Gallery({ gallery = [] }) {
-  if (!gallery.length) return null;
+const sampleGallery = [
+  "https://picsum.photos/id/1015/400/300",
+  "https://picsum.photos/id/1018/400/300",
+  "https://picsum.photos/id/1020/400/300",
+  "https://picsum.photos/id/1021/400/300",
+  "https://picsum.photos/id/1024/400/300",
+  "https://picsum.photos/id/1031/400/300",
+];
 
+export default function Gallery() {
   return (
     <Box sx={{ bgcolor: "#ffd600", py: 8, px: { xs: 2, md: 8 } }}>
       <Typography
@@ -21,7 +28,7 @@ export default function Gallery({ gallery = [] }) {
       </Typography>
 
       <Grid container spacing={3} justifyContent="center">
-        {gallery.map((url, i) => (
+        {sampleGallery.map((url, i) => (
           <Grid item xs={6} sm={4} md={3} key={i}>
             <Paper
               elevation={3}
@@ -41,7 +48,7 @@ export default function Gallery({ gallery = [] }) {
                 alt={`Gallery ${i + 1}`}
                 sx={{
                   width: "100%",
-                  height: 180,
+                  height: 300,
                   objectFit: "cover",
                 }}
               />

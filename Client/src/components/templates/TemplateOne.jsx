@@ -36,7 +36,7 @@ const TemplateOne = ({ profile: propProfile }) => {
       <AboutMe profile={profile} />
       <Skills profile={profile} />
       <Services profile={profile} />
-      <Portfolio  />
+      <Portfolio/> 
       <Testimonials />
       <Blog />
       <Contact profile={profile} />

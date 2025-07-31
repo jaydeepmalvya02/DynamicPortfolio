@@ -6,7 +6,7 @@ import {
   Card,
   Stack,
   LinearProgress,
-  useMediaQuery,
+  Slide,
   useTheme,
 } from "@mui/material";
 import TimelineDot from "@mui/lab/TimelineDot";
@@ -20,110 +20,133 @@ const iconMap = {
   verified: <VerifiedIcon sx={{ color: "#44d600" }} />,
 };
 
-export default function Skills({ skills }) {
+export default function Skills({ skills = [] }) {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
+  if (!skills.length) {
+    return (
+      <Box bgcolor="#101321" py={6} px={{ xs: 2, md: 8 }}>
+        <Typography variant="h6" sx={{ color: "#ffd600", textAlign: "center" }}>
+          No skills data to display.
+        </Typography>
+      </Box>
+    );
+  }
 
   return (
-    <Box sx={{ bgcolor: "#101321", py: 8, px: { xs: 2, md: 10 } }}>
+    <Box
+      sx={{
+        bgcolor: "#101321",
+        py: 10,
+        px: { xs: 2, md: 6 },
+        position: "relative",
+      }}
+    >
+      {/* Section Heading */}
       <Typography
-        variant="h5"
+        variant="h4"
         align="center"
-        sx={{
-          color: "#fff",
-          fontWeight: 700,
-          mb: 6,
-          "& span": { color: "#fa3757" },
-        }}
+        sx={{ color: "#ffd600", fontWeight: 800, mb: 6 }}
       >
-        My <span>Skills</span>
+        My <span style={{ color: "#fa3757" }}>Skills</span>
       </Typography>
 
+      {/* Central Vertical Timeline Line */}
       <Box
         sx={{
-          position: "relative",
-          "&::before": {
-            content: '""',
-            position: "absolute",
-            top: 0,
-            bottom: 0,
-            left: "50%",
-            width: "4px",
-            bgcolor: "#ffd600",
-            transform: "translateX(-50%)",
-          },
+          position: "absolute",
+          top: 100,
+          bottom: 100,
+          left: { xs: 24, md: "50%" },
+          transform: { md: "translateX(-1px)" },
+          width: "2px",
+          bgcolor: "#ffd600",
+          zIndex: 0,
         }}
-      >
-        <Stack spacing={5}>
-          {skills.map((s, i) => {
-            const isLeft = i % 2 === 0;
+      />
 
-            return (
+      <Stack spacing={8} zIndex={2}>
+        {skills.map((s, i) => {
+          const isLeft = i % 2 === 0;
+          const align = isLeft ? "flex-start" : "flex-end";
+          const direction = isLeft ? "left" : "right";
+
+          return (
+            <Slide
+              key={s.title}
+              direction={direction}
+              in
+              timeout={700 + i * 200}
+            >
               <Box
-                key={i}
                 sx={{
                   display: "flex",
-                  flexDirection: isMobile
-                    ? "column"
-                    : isLeft
-                    ? "row"
-                    : "row-reverse",
-                  justifyContent: "space-between",
+                  justifyContent: align,
                   alignItems: "center",
-                  gap: 3,
+                  flexDirection: "row",
+                  px: { xs: 1, md: 4 },
                 }}
               >
-                <Box flex={1} />
                 <Card
                   sx={{
-                    bgcolor: "#181b26",
+                    bgcolor: "#1b1e2c",
                     color: "#fff",
                     px: 3,
-                    py: 2,
-                    width: { xs: "100%", md: 420 },
+                    py: 2.5,
+                    width: { xs: "100%", md: "45%" },
                     borderRadius: 3,
-                    boxShadow: 4,
+                    boxShadow: 3,
                     position: "relative",
-                    zIndex: 1,
                     transition: "transform .3s, box-shadow .3s",
                     ":hover": {
-                      transform: "translateY(-4px) scale(1.03)",
                       boxShadow: 8,
+                      transform: "scale(1.03)",
                     },
                   }}
+                  elevation={0}
                 >
                   <Stack direction="row" alignItems="center" spacing={2} mb={1}>
-                    <TimelineDot sx={{ bgcolor: "#fa3757" }}>
-                      {iconMap[s.icon] || <StarIcon />}
+                    <TimelineDot
+                      sx={{
+                        bgcolor: "#fa3757",
+                        border: "3px solid #ffd600",
+                        zIndex: 1,
+                      }}
+                    >
+                      {iconMap[s.icon] || (
+                        <StarIcon sx={{ color: "#ffd600" }} />
+                      )}
                     </TimelineDot>
                     <Typography variant="h6" sx={{ fontWeight: 700 }}>
                       {s.title}
                     </Typography>
                   </Stack>
-                  <Typography sx={{ color: "#ffd600", fontSize: 14, mb: 1 }}>
+
+                  <Typography sx={{ color: "#ffd600", fontSize: 15, mb: 1 }}>
                     {Array.isArray(s.details)
                       ? s.details.join(" | ")
                       : s.details}
                   </Typography>
+
                   <LinearProgress
                     value={s.level}
                     variant="determinate"
                     sx={{
                       height: 8,
                       bgcolor: "#23253a",
+                      borderRadius: 5,
                       ".MuiLinearProgress-bar": {
                         bgcolor: "#ffd600",
+                        transition: "width 1s ease",
                       },
-                      borderRadius: 6,
                     }}
                   />
                 </Card>
-                <Box flex={1} />
               </Box>
-            );
-          })}
-        </Stack>
-      </Box>
+            </Slide>
+          );
+        })}
+      </Stack>
     </Box>
   );
 }

@@ -15,21 +15,21 @@ import {
 const blogPosts = [
   {
     title: "Using AI for Drone Navigation",
-    image: "https://source.unsplash.com/400x250/?ai,drone",
+    image: "https://picsum.photos/200/300?random=1",
     excerpt:
       "Discover how AI is revolutionizing obstacle detection and route planning in autonomous drones.",
     link: "#",
   },
   {
     title: "Top 5 Tools for Computer Vision",
-    image: "https://source.unsplash.com/400x250/?computer,vision",
+    image: "https://picsum.photos/200/300?random=2",
     excerpt:
       "Explore the most powerful libraries and frameworks for building robust computer vision systems.",
     link: "#",
   },
   {
     title: "ROS Integration for Beginners",
-    image: "https://source.unsplash.com/400x250/?robotics,ros",
+    image: "https://picsum.photos/200/300?random=3",
     excerpt:
       "Learn how to integrate your drone project with ROS and automate sensor data processing.",
     link: "#",

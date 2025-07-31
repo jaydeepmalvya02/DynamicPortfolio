@@ -177,8 +177,12 @@ const mockProfiles = [
       { title: "GIS Visualizations", details: ["Map Design", "3D Elevation"] },
     ],
     gallery: [
-      "https://source.unsplash.com/400x300/?drone&sig=1",
-      "https://source.unsplash.com/400x300/?aerospace&sig=2",
+      "https://picsum.photos/200/300?random=1",
+      "https://picsum.photos/200/300?random=2",
+      "https://picsum.photos/200/300?random=3",
+      "https://picsum.photos/200/300?random=4",
+      "https://picsum.photos/200/300?random=5",
+      
     ],
 
     email: "amanda.davis@example.com",

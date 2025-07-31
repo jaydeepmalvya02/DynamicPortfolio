@@ -16,19 +16,19 @@ const mockPosts = [
     title: "Mastering Drone AI Navigation",
     excerpt:
       "Explore how AI is transforming autonomous drone flight with new navigation algorithms and systems.",
-    image: "https://source.unsplash.com/400x300/?drone,technology&sig=11",
+    image: "https://picsum.photos/200/300?random=45",
   },
   {
     title: "Building Vision-Based Systems",
     excerpt:
       "A quick guide to building efficient vision pipelines using OpenCV, TensorFlow, and onboard GPUs.",
-    image: "https://source.unsplash.com/400x300/?ai,vision&sig=12",
+    image: "https://picsum.photos/200/300?random=12",
   },
   {
     title: "ROS for Beginners",
     excerpt:
       "Getting started with Robot Operating System (ROS) to control and automate drone tasks effectively.",
-    image: "https://source.unsplash.com/400x300/?robotics,ros&sig=13",
+    image: "https://picsum.photos/200/300?random=33",
   },
 ];
 

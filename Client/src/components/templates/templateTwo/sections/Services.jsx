@@ -58,11 +58,11 @@ export default function Services({ services }) {
               {/* Decorative circle */}
               <Box
                 sx={{
-                  position: "absolute",
-                  top: -28,
+                  position: "relative",
+                  top: 8,
                   left: "calc(50% - 28px)",
-                  width: 56,
-                  height: 56,
+                  width: 40,
+                  height: 40,
                   bgcolor: "#ffe066",
                   borderRadius: "50%",
                   boxShadow: "0 0 0 4px #fa3757",

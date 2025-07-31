@@ -45,6 +45,7 @@ const TemplateTwo = ({ profile: propProfile }) => {
         phone={profile.phone}
         name={profile.name}
         title={profile.title}
+        image={profile.image}
       />
       <Skills skills={profile.skills} />
       <Services services={profile.services} />
