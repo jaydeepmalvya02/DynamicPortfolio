@@ -1,11 +1,19 @@
 import React from "react";
-import { Box, Typography, Card, Stack, LinearProgress } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Card,
+  Stack,
+  LinearProgress,
+  useTheme,
+  Slide,
+} from "@mui/material";
 import TimelineDot from "@mui/lab/TimelineDot";
 import StarIcon from "@mui/icons-material/Star";
 import SchoolIcon from "@mui/icons-material/School";
 import VerifiedIcon from "@mui/icons-material/Verified";
 
-// Map skill icon names (string) to Material UI icons
+// Icon mapping
 const iconMap = {
   star: <StarIcon sx={{ color: "#ffd600" }} />,
   school: <SchoolIcon sx={{ color: "#fa3757" }} />,
@@ -13,6 +21,8 @@ const iconMap = {
 };
 
 export default function SkillsTimeline({ skills }) {
+  const theme = useTheme();
+
   if (!skills || skills.length === 0) {
     return (
       <Box bgcolor="#181b26" py={6} px={{ xs: 2, md: 8 }}>
@@ -24,58 +34,116 @@ export default function SkillsTimeline({ skills }) {
   }
 
   return (
-    <Box bgcolor="#181b26" py={6} px={{ xs: 2, md: 8 }}>
+    <Box
+      sx={{
+        bgcolor: "#0f111a",
+        py: 10,
+        px: { xs: 2, md: 6 },
+        position: "relative",
+      }}
+    >
+      {/* Section Heading */}
       <Typography
-        variant="h5"
-        sx={{ color: "#ffd600", fontWeight: 800, mb: 3, textAlign: "center" }}
+        variant="h4"
+        align="center"
+        sx={{ color: "#ffd600", fontWeight: 800, mb: 6 }}
       >
         Top <span style={{ color: "#fa3757" }}>Skills</span>
       </Typography>
-      <Stack spacing={3} alignItems="center">
-        {skills.map((s) => (
-          <Card
-            key={s.title}
-            sx={{
-              bgcolor: "#23253a",
-              color: "#fff",
-              px: 3,
-              py: 2.5,
-              width: { xs: "100%", md: 500 },
-              position: "relative",
-              overflow: "unset",
-              borderRadius: 3,
-              boxShadow: 2,
-              transition: "transform .25s, box-shadow .25s",
-              ":hover": {
-                boxShadow: 8,
-                transform: "scale(1.04) translateY(-4px)",
-              },
-            }}
-            elevation={0}
-          >
-            <Stack direction="row" alignItems="center" spacing={2} mb={1}>
-              <TimelineDot sx={{ bgcolor: "#fa3757" }}>
-                {iconMap[s.icon] || null}
-              </TimelineDot>
-              <Typography variant="h6" sx={{ fontWeight: 700 }}>
-                {s.title}
-              </Typography>
-            </Stack>
-            <Typography sx={{ color: "#ffd600", fontSize: 15, mb: 1 }}>
-              {Array.isArray(s.details) ? s.details.join(" | ") : s.details}
-            </Typography>
-            <LinearProgress
-              value={s.level}
-              variant="determinate"
-              sx={{
-                height: 8,
-                bgcolor: "#191c29",
-                ".MuiLinearProgress-bar": { bgcolor: "#ffd600" },
-                borderRadius: 6,
-              }}
-            />
-          </Card>
-        ))}
+
+      {/* Central Vertical Timeline Line */}
+      <Box
+        sx={{
+          position: "absolute",
+          top: 100,
+          bottom: 100,
+          left: { xs: 24, md: "50%" },
+          transform: { md: "translateX(-1px)" },
+          width: "2px",
+          bgcolor: "#ffd600",
+          zIndex: 0,
+        }}
+      />
+
+      <Stack spacing={8} zIndex={2}>
+        {skills.map((s, i) => {
+          const isLeft = i % 2 === 0;
+          const align = isLeft ? "flex-start" : "flex-end";
+          const direction = isLeft ? "left" : "right";
+
+          return (
+            <Slide
+              key={s.title}
+              direction={direction}
+              in
+              timeout={700 + i * 200}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: align,
+                  alignItems: "center",
+                  flexDirection: "row",
+                  px: { xs: 1, md: 4 },
+                }}
+              >
+                <Card
+                  sx={{
+                    bgcolor: "#23253a",
+                    color: "#fff",
+                    px: 3,
+                    py: 2.5,
+                    width: { xs: "100%", md: "45%" },
+                    borderRadius: 3,
+                    boxShadow: 2,
+                    position: "relative",
+                    transition: "transform .3s, box-shadow .3s",
+                    ":hover": {
+                      boxShadow: 8,
+                      transform: "scale(1.03)",
+                    },
+                  }}
+                  elevation={0}
+                >
+                  <Stack direction="row" alignItems="center" spacing={2} mb={1}>
+                    <TimelineDot
+                      sx={{
+                        bgcolor: "#fa3757",
+                        border: "3px solid #ffd600",
+                        zIndex: 1,
+                      }}
+                    >
+                      {iconMap[s.icon] || null}
+                    </TimelineDot>
+                    <Typography variant="h6" sx={{ fontWeight: 700 }}>
+                      {s.title}
+                    </Typography>
+                  </Stack>
+
+                  <Typography sx={{ color: "#ffd600", fontSize: 15, mb: 1 }}>
+                    {Array.isArray(s.details)
+                      ? s.details.join(" | ")
+                      : s.details}
+                  </Typography>
+
+                  <LinearProgress
+                    value={s.level}
+                    variant="determinate"
+                    sx={{
+                      height: 8,
+                      bgcolor: "#191c29",
+                      borderRadius: 5,
+                      ".MuiLinearProgress-bar": {
+                        bgcolor: "#ffd600",
+                        transition: "width 1s ease",
+                      },
+                    }}
+                  />
+                </Card>
+              </Box>
+            </Slide>
+          );
+        })}
       </Stack>
     </Box>
   );

@@ -1,3 +1,5 @@
+// src/components/templateTwo/AboutContact.jsx
+
 import {
   Box,
   Typography,
@@ -6,6 +8,7 @@ import {
   Chip,
   Stack,
   Divider,
+  Avatar,
 } from "@mui/material";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import PhoneIphoneIcon from "@mui/icons-material/PhoneIphone";
@@ -18,23 +21,96 @@ export default function AboutContact({
   phone,
   name,
   title,
+  image = "",
 }) {
   return (
     <Box
       sx={{
         display: "flex",
         flexDirection: { xs: "column", md: "row" },
-        gap: 3,
-        bgcolor: "#181b26",
-        px: { xs: 2, md: 8 },
+        px: 2,
         py: 5,
+        bgcolor: "#0f111a",
+        gap: 3,
       }}
     >
-      {/* About */}
+      {/* Yellow Contact Card */}
+      <Box flex={1}>
+        <Card
+          sx={{
+            bgcolor: "#ffd600",
+            color: "#232323",
+            borderRadius: 3,
+            p: 3,
+            textAlign: "center",
+            transition: "all 0.3s ease",
+            ":hover": {
+              boxShadow: 8,
+              transform: "translateY(-4px)",
+              bgcolor: "#fff8e1",
+            },
+          }}
+        >
+          <Avatar
+            src={image}
+            sx={{
+              width: 64,
+              height: 64,
+              mx: "auto",
+              mb: 1,
+              border: "2px solid #fa3757",
+            }}
+          />
+          <Typography
+            variant="subtitle2"
+            sx={{ fontWeight: 700, color: "#fa3757" }}
+          >
+            {name}
+          </Typography>
+          <Typography variant="body2" sx={{ fontWeight: 600, mb: 2 }}>
+            {title}
+          </Typography>
+
+          <Divider sx={{ bgcolor: "#fa3757", opacity: 0.3, mb: 2 }} />
+
+          <Stack spacing={1}>
+            <Chip
+              icon={<MailOutlineIcon />}
+              label={email}
+              variant="outlined"
+              sx={{
+                bgcolor: "#fa3757",
+                color: "#fff",
+                fontWeight: 600,
+                ":hover": {
+                  bgcolor: "#232323",
+                  color: "#ffd600",
+                },
+              }}
+            />
+            <Chip
+              icon={<PhoneIphoneIcon />}
+              label={phone}
+              variant="outlined"
+              sx={{
+                bgcolor: "#232323",
+                color: "#ffd600",
+                fontWeight: 600,
+                ":hover": {
+                  bgcolor: "#fa3757",
+                  color: "#fff",
+                },
+              }}
+            />
+          </Stack>
+        </Card>
+      </Box>
+
+      {/* About Section */}
       <Box flex={2}>
         <Card
           sx={{
-            bgcolor: "#23253a",
+            bgcolor: "#1a1d2e",
             color: "#fff",
             borderRadius: 3,
             p: 3,
@@ -47,12 +123,17 @@ export default function AboutContact({
             variant="h5"
             sx={{ fontWeight: 700, color: "#ffd600", mb: 1 }}
           >
-            About <span style={{ color: "#fa3757" }}>{name.split(" ")[0]}</span>
+            About{" "}
+            <span style={{ color: "#fa3757" }}>{name?.split(" ")[0]}</span>
           </Typography>
-          <Typography sx={{ color: "#d1d1d1", mb: 2 }}>{about}</Typography>
+          <Typography sx={{ color: "#d1d1d1", mb: 2 }}>
+            {Array.isArray(about) ? about.join(" ") : about}
+          </Typography>
+
           <Divider sx={{ bgcolor: "#ffd600", opacity: 0.4 }} />
+
           <Box mt={2}>
-            {highlights.map((h, i) => (
+            {highlights?.map((h, i) => (
               <Chip
                 key={i}
                 icon={<EmojiEventsIcon sx={{ color: "#ffb400" }} />}
@@ -74,57 +155,6 @@ export default function AboutContact({
               />
             ))}
           </Box>
-        </Card>
-      </Box>
-
-      {/* Contact */}
-      <Box flex={1} display="flex" alignItems="flex-start" minWidth={250}>
-        <Card
-          sx={{
-            bgcolor: "#ffd600",
-            color: "#23253a",
-            borderRadius: 3,
-            p: 3,
-            ml: "auto",
-            transition: "box-shadow .3s, transform .3s",
-            ":hover": {
-              boxShadow: 12,
-              transform: "translateY(-4px) scale(1.03)",
-              bgcolor: "#fffde7",
-            },
-          }}
-        >
-          <Typography variant="subtitle1" sx={{ fontWeight: 700, mb: 1 }}>
-            Contact
-          </Typography>
-          <Stack spacing={1.5}>
-            <Chip
-              icon={<MailOutlineIcon />}
-              label={email}
-              sx={{
-                fontWeight: 600,
-                bgcolor: "#fa3757",
-                color: "#fff",
-                ":hover": {
-                  bgcolor: "#ffd600",
-                  color: "#23253a",
-                  boxShadow: 2,
-                },
-              }}
-              clickable
-            />
-            <Chip
-              icon={<PhoneIphoneIcon />}
-              label={phone}
-              sx={{
-                fontWeight: 600,
-                bgcolor: "#23253a",
-                color: "#ffd600",
-                ":hover": { bgcolor: "#fa3757", color: "#fff", boxShadow: 3 },
-              }}
-              clickable
-            />
-          </Stack>
         </Card>
       </Box>
     </Box>

@@ -58,6 +58,20 @@ const mockProfiles = [
     email: "sumit.krishnan@example.com",
     phone: "+91-9999999999",
     template: "TemplateOne",
+    testimonials: [
+      {
+        name: "Rohit Sharma",
+        role: "Product Manager",
+        quote: "Absolutely loved working with this team — fast and efficient!",
+        avatar: "https://xsgames.co/randomusers/assets/avatars/male/5.jpg",
+      },
+      {
+        name: "Sneha Kapoor",
+        role: "CEO, Creatix",
+        quote: "Impressive design work, I highly recommend their services!",
+        avatar: "https://xsgames.co/randomusers/assets/avatars/female/11.jpg",
+      },
+    ],
   },
   {
     id: 2,
@@ -107,6 +121,20 @@ const mockProfiles = [
     email: "dev.r@example.com",
     phone: "+65-12345678",
     template: "TemplateOne",
+    testimonials: [
+      {
+        name: "Rohit Sharma",
+        role: "Product Manager",
+        quote: "Absolutely loved working with this team — fast and efficient!",
+        avatar: "https://xsgames.co/randomusers/assets/avatars/male/5.jpg",
+      },
+      {
+        name: "Sneha Kapoor",
+        role: "CEO, Creatix",
+        quote: "Impressive design work, I highly recommend their services!",
+        avatar: "https://xsgames.co/randomusers/assets/avatars/female/11.jpg",
+      },
+    ],
   },
   {
     id: 3,
@@ -156,6 +184,20 @@ const mockProfiles = [
     email: "amanda.davis@example.com",
     phone: "+1-303-9876543",
     template: "TemplateOne",
+    testimonials: [
+      {
+        name: "Rohit Sharma",
+        role: "Product Manager",
+        quote: "Absolutely loved working with this team — fast and efficient!",
+        avatar: "https://xsgames.co/randomusers/assets/avatars/male/5.jpg",
+      },
+      {
+        name: "Sneha Kapoor",
+        role: "CEO, Creatix",
+        quote: "Impressive design work, I highly recommend their services!",
+        avatar: "https://xsgames.co/randomusers/assets/avatars/female/11.jpg",
+      },
+    ],
   },
   {
     id: 4,
@@ -207,6 +249,20 @@ const mockProfiles = [
     email: "david.t@example.com",
     phone: "+1-212-555-7890",
     template: "TemplateOne",
+    testimonials: [
+      {
+        name: "Rohit Sharma",
+        role: "Product Manager",
+        quote: "Absolutely loved working with this team — fast and efficient!",
+        avatar: "https://xsgames.co/randomusers/assets/avatars/male/5.jpg",
+      },
+      {
+        name: "Sneha Kapoor",
+        role: "CEO, Creatix",
+        quote: "Impressive design work, I highly recommend their services!",
+        avatar: "https://xsgames.co/randomusers/assets/avatars/female/11.jpg",
+      },
+    ],
   },
   {
     id: 5,
@@ -255,6 +311,21 @@ const mockProfiles = [
       "https://source.unsplash.com/400x300/?drone&sig=1",
       "https://source.unsplash.com/400x300/?aerospace&sig=2",
     ],
+    testimonials: [
+      {
+        name: "Rohit Sharma",
+        role: "Product Manager",
+        quote: "Absolutely loved working with this team — fast and efficient!",
+        avatar: "https://xsgames.co/randomusers/assets/avatars/male/5.jpg",
+      },
+      {
+        name: "Sneha Kapoor",
+        role: "CEO, Creatix",
+        quote: "Impressive design work, I highly recommend their services!",
+        avatar: "https://xsgames.co/randomusers/assets/avatars/female/11.jpg",
+      },
+    ],
+
     email: "emma.foster@example.com",
     phone: "+1-619-9876543",
     template: "TemplateOne",
@@ -306,6 +377,20 @@ const mockProfiles = [
     email: "kevin.b@example.com",
     phone: "+1-737-333-1234",
     template: "TemplateOne",
+    testimonials: [
+      {
+        name: "Rohit Sharma",
+        role: "Product Manager",
+        quote: "Absolutely loved working with this team — fast and efficient!",
+        avatar: "https://xsgames.co/randomusers/assets/avatars/male/5.jpg",
+      },
+      {
+        name: "Sneha Kapoor",
+        role: "CEO, Creatix",
+        quote: "Impressive design work, I highly recommend their services!",
+        avatar: "https://xsgames.co/randomusers/assets/avatars/female/11.jpg",
+      },
+    ],
   },
   {
     id: 7,
@@ -354,6 +439,20 @@ const mockProfiles = [
     email: "lisa.w@example.com",
     phone: "+1-415-111-5678",
     template: "TemplateOne",
+    testimonials: [
+      {
+        name: "Rohit Sharma",
+        role: "Product Manager",
+        quote: "Absolutely loved working with this team — fast and efficient!",
+        avatar: "https://xsgames.co/randomusers/assets/avatars/male/5.jpg",
+      },
+      {
+        name: "Sneha Kapoor",
+        role: "CEO, Creatix",
+        quote: "Impressive design work, I highly recommend their services!",
+        avatar: "https://xsgames.co/randomusers/assets/avatars/female/11.jpg",
+      },
+    ],
   },
   {
     id: 8,
@@ -402,6 +501,20 @@ const mockProfiles = [
     email: "robert.k@example.com",
     phone: "+1-310-222-8888",
     template: "TemplateOne",
+    testimonials: [
+      {
+        name: "Rohit Sharma",
+        role: "Product Manager",
+        quote: "Absolutely loved working with this team — fast and efficient!",
+        avatar: "https://xsgames.co/randomusers/assets/avatars/male/5.jpg",
+      },
+      {
+        name: "Sneha Kapoor",
+        role: "CEO, Creatix",
+        quote: "Impressive design work, I highly recommend their services!",
+        avatar: "https://xsgames.co/randomusers/assets/avatars/female/11.jpg",
+      },
+    ],
   },
   {
     id: 9,
@@ -450,6 +563,20 @@ const mockProfiles = [
     email: "maria.g@example.com",
     phone: "+1-737-555-1234",
     template: "TemplateTwo",
+    testimonials: [
+      {
+        name: "Rohit Sharma",
+        role: "Product Manager",
+        quote: "Absolutely loved working with this team — fast and efficient!",
+        avatar: "https://xsgames.co/randomusers/assets/avatars/male/5.jpg",
+      },
+      {
+        name: "Sneha Kapoor",
+        role: "CEO, Creatix",
+        quote: "Impressive design work, I highly recommend their services!",
+        avatar: "https://xsgames.co/randomusers/assets/avatars/female/11.jpg",
+      },
+    ],
   },
   {
     id: 10,
@@ -498,6 +625,20 @@ const mockProfiles = [
     email: "sanjay.p@example.com",
     phone: "+91-7777777777",
     template: "TemplateTwo",
+    testimonials: [
+      {
+        name: "Rohit Sharma",
+        role: "Product Manager",
+        quote: "Absolutely loved working with this team — fast and efficient!",
+        avatar: "https://xsgames.co/randomusers/assets/avatars/male/5.jpg",
+      },
+      {
+        name: "Sneha Kapoor",
+        role: "CEO, Creatix",
+        quote: "Impressive design work, I highly recommend their services!",
+        avatar: "https://xsgames.co/randomusers/assets/avatars/female/11.jpg",
+      },
+    ],
   },
 ];
 

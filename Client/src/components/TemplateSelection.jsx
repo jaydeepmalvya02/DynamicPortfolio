@@ -21,11 +21,11 @@ const TemplateSelection = () => {
   const templates = [
     {
       name: "TemplateOne",
-      preview: "/previews/template1.png",
+      preview: "/TemplateOne.png",
     },
     {
       name: "TemplateTwo",
-      preview: "/previews/template2.png",
+      preview: "/TemplateTwo.png",
     },
   ];
 

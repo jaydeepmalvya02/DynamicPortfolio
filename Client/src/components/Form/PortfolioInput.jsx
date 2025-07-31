@@ -68,6 +68,7 @@ const PortfolioInput = () => {
       id: Date.now(),
       name: formData.name || "",
       title: formData.title || "",
+      tagline: formData.tagline || "",
       location: formData.location || "",
       experience: formData.experience || "",
       rating: Number(formData.rating || 0),
@@ -93,33 +94,19 @@ const PortfolioInput = () => {
       case 0:
         return (
           <>
-            {[
-              "name",
-              "title",
-              "location",
-              "experience",
-              "rating",
-              "projects",
-            ].map((field) => (
+            {[ "name", "title", "tagline", "location", "experience", "rating", "projects" ].map((field) => (
               <TextField
                 key={field}
                 fullWidth
                 label={field.charAt(0).toUpperCase() + field.slice(1)}
                 name={field}
-                type={
-                  field === "rating" || field === "projects" ? "number" : "text"
-                }
+                type={["rating", "projects"].includes(field) ? "number" : "text"}
                 value={formData[field] || ""}
                 onChange={handleChange}
                 sx={{ my: 1 }}
               />
             ))}
-            <TextField
-              fullWidth
-              type="file"
-              onChange={handleImageUpload}
-              sx={{ my: 1 }}
-            />
+            <TextField fullWidth type="file" onChange={handleImageUpload} sx={{ my: 1 }} />
             <TextField
               fullWidth
               label="Add Tag"
@@ -134,11 +121,7 @@ const PortfolioInput = () => {
             />
             <Stack direction="row" spacing={1}>
               {(formData.tags || []).map((tag, i) => (
-                <Chip
-                  key={i}
-                  label={tag}
-                  onDelete={() => handleArrayRemove("tags", i)}
-                />
+                <Chip key={i} label={tag} onDelete={() => handleArrayRemove("tags", i)} />
               ))}
             </Stack>
           </>
@@ -161,11 +144,7 @@ const PortfolioInput = () => {
             />
             <Stack spacing={1}>
               {(formData.about || []).map((line, i) => (
-                <Chip
-                  key={i}
-                  label={line}
-                  onDelete={() => handleArrayRemove("about", i)}
-                />
+                <Chip key={i} label={line} onDelete={() => handleArrayRemove("about", i)} />
               ))}
             </Stack>
 
@@ -183,11 +162,7 @@ const PortfolioInput = () => {
             />
             <Stack spacing={1}>
               {(formData.highlights || []).map((h, i) => (
-                <Chip
-                  key={i}
-                  label={h}
-                  onDelete={() => handleArrayRemove("highlights", i)}
-                />
+                <Chip key={i} label={h} onDelete={() => handleArrayRemove("highlights", i)} />
               ))}
             </Stack>
           </>
